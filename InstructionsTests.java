@@ -1,0 +1,144 @@
+package com.company;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import javax.naming.NamingException;
+
+public class InstructionsTests {
+    public InstructionsTests() throws NamingException {
+        /*Minus();
+        Plus();
+        Multiple();
+        Division();
+        SQRT();
+        Print();
+        Push();
+        Pop();*/
+    }
+    @Test
+    public void testMinus () throws NamingException {
+        CalculatorContext ctx = new CalculatorContext();
+        ctx.getStack().addFirst(5.0);
+        ctx.getStack().addFirst(2.0);
+        CalculatorContext normal_ctx = new CalculatorContext();
+        normal_ctx.getStack().addFirst(3.0);
+
+        Minus forTest = new Minus();
+        forTest.Execute(null, ctx);
+        Assert.assertEquals("Minus doesn't work correctly :(", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
+
+        //Assert.assertEquals("Minus doesn't work correctly :(", 3.0, 3.0, 0.1);
+    }
+
+    @Test
+    public void testPlus() throws NamingException {
+        CalculatorContext ctx = new CalculatorContext();
+        ctx.getStack().addFirst(5.0);
+        ctx.getStack().addFirst(2.0);
+        CalculatorContext normal_ctx = new CalculatorContext();
+        normal_ctx.getStack().addFirst(7.0);
+
+        Plus forTest = new Plus();
+        forTest.Execute(null, ctx);
+        Assert.assertEquals("Plus doesn't work correctly :(", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
+    }
+
+    @Test
+    public void testMultiple() throws NamingException {
+        CalculatorContext ctx = new CalculatorContext();
+        ctx.getStack().addFirst(5.0);
+        ctx.getStack().addFirst(2.0);
+        CalculatorContext normal_ctx = new CalculatorContext();
+        normal_ctx.getStack().addFirst(10.0);
+
+        Multiple forTest = new Multiple();
+        forTest.Execute(null, ctx);
+        Assert.assertEquals("Multiple doesn't work correctly :(", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
+    }
+
+    @Test
+    public void testDivision() throws NamingException {
+        CalculatorContext ctx = new CalculatorContext();
+        ctx.getStack().addFirst(5.0);
+        ctx.getStack().addFirst(2.0);
+        CalculatorContext normal_ctx = new CalculatorContext();
+        normal_ctx.getStack().addFirst(2.5);
+
+        Division forTest = new Division();
+        forTest.Execute(null, ctx);
+        Assert.assertEquals("Division doesn't work correctly :(", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
+    }
+
+    @Test
+    public void testPrint() throws NamingException {
+        CalculatorContext ctx = new CalculatorContext();
+        ctx.getStack().addFirst(5.0);
+        ctx.getStack().addFirst(2.0);
+        CalculatorContext normal_ctx = new CalculatorContext();
+        normal_ctx.getStack().addFirst(5.0);
+        normal_ctx.getStack().addFirst(2.0);
+
+        Print forTest = new Print();
+        forTest.Execute(null, ctx);
+        while (!ctx.getStack().isEmpty() && !normal_ctx.getStack().isEmpty()) {
+            Assert.assertEquals("Print doesn't work correctly :(", ctx.getStack().pop(), normal_ctx.getStack().pop());
+        }
+        //Assert.assertSame(ctx.getStack(), normal_ctx.getStack(), 0.00001);
+    }
+
+    @Test
+    public void testSQRT() throws NamingException {
+        CalculatorContext ctx = new CalculatorContext();
+        ctx.getStack().addFirst(4.0);
+        CalculatorContext normal_ctx = new CalculatorContext();
+        normal_ctx.getStack().addFirst(2.0);
+
+        SQRT forTest = new SQRT();
+        forTest.Execute(null, ctx);
+        Assert.assertEquals("SQRT doesn't work correctly :(", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
+        //Assert.assertSame(ctx.getStack(), normal_ctx.getStack(), 0.00001);
+    }
+
+    @Test
+    public void testPush() throws NamingException {
+        CalculatorContext ctx = new CalculatorContext();
+        //ctx.getStack().addFirst(4.0);
+        CalculatorContext normal_ctx = new CalculatorContext();
+        normal_ctx.getStack().addFirst(2.0);
+        String[] args = {"PUSH", "2.0"};
+
+        Push forTest = new Push();
+        forTest.Execute(args, ctx);
+        Assert.assertEquals("Push doesn't work correctly :(", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
+        //Assert.assertSame(ctx.getStack(), normal_ctx.getStack(), 0.00001);
+    }
+
+    @Test
+    public void testPop() throws NamingException {
+        CalculatorContext ctx = new CalculatorContext();
+        ctx.getStack().addFirst(2.0);
+        ctx.getStack().addFirst(4.0);
+        CalculatorContext normal_ctx = new CalculatorContext();
+        normal_ctx.getStack().addFirst(2.0);
+        //String args[] = {"PUSH", "2.0"};
+
+        Pop forTest = new Pop();
+        forTest.Execute(null, ctx);
+        Assert.assertEquals("Pop doesn't work correctly :(", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
+        //Assert.assertSame(ctx.getStack(), normal_ctx.getStack(), 0.00001);
+    }
+
+    @Test
+    public void testDefine() throws NamingException {
+        CalculatorContext ctx = new CalculatorContext();
+        CalculatorContext normal_ctx = new CalculatorContext();
+        normal_ctx.getMap().put("a", 4.0);
+        String[] args = {"Define", "a","4.0"};
+
+        Define forTest = new Define();
+        forTest.Execute(args, ctx);
+        Assert.assertEquals("Define doesn't work correctly :(", ctx.getMap().get("a"), normal_ctx.getMap().get("a"), 0.00001);
+        //Assert.assertSame(ctx.getStack(), normal_ctx.getStack(), 0.00001);
+    }
+}

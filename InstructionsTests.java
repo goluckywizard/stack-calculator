@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.instructions.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -25,7 +26,13 @@ public class InstructionsTests {
         normal_ctx.getStack().addFirst(3.0);
 
         Minus forTest = new Minus();
-        forTest.Execute(null, ctx);
+        try {
+            forTest.Execute(null, ctx);
+        }
+        catch (Exception ex) {
+            Assert.assertEquals("Exception! 0_0", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
+
+        }
         Assert.assertEquals("Minus doesn't work correctly :(", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
 
         //Assert.assertEquals("Minus doesn't work correctly :(", 3.0, 3.0, 0.1);
@@ -40,7 +47,13 @@ public class InstructionsTests {
         normal_ctx.getStack().addFirst(7.0);
 
         Plus forTest = new Plus();
-        forTest.Execute(null, ctx);
+        try {
+            forTest.Execute(null, ctx);
+        }
+        catch (Exception ex) {
+            Assert.assertEquals("Exception! 0_0", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
+
+        }
         Assert.assertEquals("Plus doesn't work correctly :(", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
     }
 
@@ -53,7 +66,13 @@ public class InstructionsTests {
         normal_ctx.getStack().addFirst(10.0);
 
         Multiple forTest = new Multiple();
-        forTest.Execute(null, ctx);
+        try {
+            forTest.Execute(null, ctx);
+        }
+        catch (Exception ex) {
+            Assert.assertEquals("Exception! 0_0", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
+
+        }
         Assert.assertEquals("Multiple doesn't work correctly :(", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
     }
 
@@ -66,7 +85,13 @@ public class InstructionsTests {
         normal_ctx.getStack().addFirst(2.5);
 
         Division forTest = new Division();
-        forTest.Execute(null, ctx);
+        try {
+            forTest.Execute(null, ctx);
+        }
+        catch (Exception ex) {
+            Assert.assertEquals("Exception! 0_0", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
+
+        }
         Assert.assertEquals("Division doesn't work correctly :(", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
     }
 
@@ -80,7 +105,13 @@ public class InstructionsTests {
         normal_ctx.getStack().addFirst(2.0);
 
         Print forTest = new Print();
-        forTest.Execute(null, ctx);
+        try {
+            forTest.Execute(null, ctx);
+        }
+        catch (Exception ex) {
+            Assert.assertEquals("Exception! 0_0", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
+
+        }
         while (!ctx.getStack().isEmpty() && !normal_ctx.getStack().isEmpty()) {
             Assert.assertEquals("Print doesn't work correctly :(", ctx.getStack().pop(), normal_ctx.getStack().pop());
         }
@@ -95,7 +126,13 @@ public class InstructionsTests {
         normal_ctx.getStack().addFirst(2.0);
 
         SQRT forTest = new SQRT();
-        forTest.Execute(null, ctx);
+        try {
+            forTest.Execute(null, ctx);
+        }
+        catch (Exception ex) {
+            Assert.assertEquals("Exception! 0_0", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
+
+        }
         Assert.assertEquals("SQRT doesn't work correctly :(", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
         //Assert.assertSame(ctx.getStack(), normal_ctx.getStack(), 0.00001);
     }
@@ -109,7 +146,13 @@ public class InstructionsTests {
         String[] args = {"PUSH", "2.0"};
 
         Push forTest = new Push();
-        forTest.Execute(args, ctx);
+        try {
+            forTest.Execute(args, ctx);
+        }
+        catch (Exception ex) {
+            Assert.assertEquals("Exception! 0_0", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
+
+        }
         Assert.assertEquals("Push doesn't work correctly :(", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
         //Assert.assertSame(ctx.getStack(), normal_ctx.getStack(), 0.00001);
     }
@@ -124,7 +167,13 @@ public class InstructionsTests {
         //String args[] = {"PUSH", "2.0"};
 
         Pop forTest = new Pop();
-        forTest.Execute(null, ctx);
+        try {
+            forTest.Execute(null, ctx);
+        }
+        catch (Exception ex) {
+            Assert.assertEquals("Exception! 0_0", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
+
+        }
         Assert.assertEquals("Pop doesn't work correctly :(", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
         //Assert.assertSame(ctx.getStack(), normal_ctx.getStack(), 0.00001);
     }
@@ -137,7 +186,13 @@ public class InstructionsTests {
         String[] args = {"Define", "a","4.0"};
 
         Define forTest = new Define();
-        forTest.Execute(args, ctx);
+        try {
+            forTest.Execute(args, ctx);
+        }
+        catch (Exception ex) {
+            Assert.assertEquals("Exception! 0_0", ctx.getStack().pop(), normal_ctx.getStack().pop(), 0.00001);
+
+        }
         Assert.assertEquals("Define doesn't work correctly :(", ctx.getMap().get("a"), normal_ctx.getMap().get("a"), 0.00001);
         //Assert.assertSame(ctx.getStack(), normal_ctx.getStack(), 0.00001);
     }

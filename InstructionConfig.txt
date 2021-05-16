@@ -2,7 +2,7 @@ DEFINE Define
 PUSH Push
 PRINT Print
 POP Pop
-+ Plus
+hui Plus
 - Minus
 * Multiple
 / Division

@@ -12,10 +12,10 @@ public class CalculatorContext {
         stack = new ArrayDeque<>();
         defVar = new HashMap<>();
     }
-    Deque<Double> getStack() {
+    public Deque<Double> getStack() {
         return stack;
     }
-    Map<String, Double> getMap() {
+    public Map<String, Double> getMap() {
         return defVar;
     }
 }

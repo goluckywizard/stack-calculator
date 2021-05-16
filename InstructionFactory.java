@@ -1,7 +1,8 @@
 package com.company;
 
+import com.company.instructions.Instruction;
+
 import java.io.*;
-import java.util.Map;
 import java.util.TreeMap;
 
 public class InstructionFactory {

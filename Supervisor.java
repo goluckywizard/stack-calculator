@@ -1,15 +1,14 @@
 package com.company;
+import com.company.instructionexception.InstructionException;
+import com.company.instructions.Instruction;
+import com.company.instructions.*;
+
 import java.io.*;
-import java.lang.Object;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import java.io.FileReader;
 import java.util.*;
-import javax.naming.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.resource.spi.work.ExecutionContext;
+
 public class Supervisor {
     CalculatorContext ctx = new CalculatorContext();
     Supervisor(String[] args) {
@@ -54,7 +53,7 @@ public class Supervisor {
                     try {
                         next.Execute(comArgs, ctx);
                     }
-                    catch (Exception e) {
+                    catch (InstructionException e) {
                         Logger.getGlobal().log(Level.WARNING, e.toString());
                     }
 
